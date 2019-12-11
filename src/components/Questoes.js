@@ -10,7 +10,7 @@ function Questoes() {
     const response = await api.get("/questions", {
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZGZhMjllNDFiOTQzMDAxNzIxMTcxYiIsImlhdCI6MTU3NTk0Nzk5MywiZXhwIjoxNTc2MDM0MzkzfQ.pfuapzw-Gxr4mCDWTkUqWVOQlF-WZ4sxdwNuS21IJBA"
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZGIzNDM2NTMwM2ZiMWEzNzk1MjU2YiIsImlhdCI6MTU3NjAyNjExMywiZXhwIjoxNTc2MTEyNTEzfQ.h_2VhMgwzHm7oIMOJM_2Dm42xzE6-JW7RpREZDVxELs"
       }
     });
     setQuestions(response.data);
@@ -21,19 +21,33 @@ function Questoes() {
   }, []);
 
   return (
-    <ul>
-      {questions.map((question, i) => {
-        return (
-          <li key={i}>
-            <a
-              href={`https://wfaq-backend.herokuapp.com/questions/${question._id}`}
-            >
-              {question.title}
-            </a>
-          </li>
-        );
-      })}
-    </ul>
+    <div>
+      <input type="text" name="" id="" />
+
+      <ul>
+        {questions.map((question, i) => {
+          return (
+            <li key={i}>
+              <div className="questions">
+                <div className="votes">
+                  <span className="plus">+</span>
+                  <span>
+                    {(question.upVotes ? question.upVotes.length : 0) -
+                      (question.downVotes ? question.downVotes.length : 0)}
+                  </span>
+                  <span className="minus">-</span>
+                </div>
+                <div className="question">
+                  <div className="question-title">{question.title}</div>
+                  <div className="question-question">{question.question}</div>
+                </div>
+                <div className="user">{question.user}</div>
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 }
 
