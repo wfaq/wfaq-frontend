@@ -10,7 +10,7 @@ function Questoes() {
     const response = await api.get("/questions", {
       headers: {
         Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZGIzNDM2NTMwM2ZiMWEzNzk1MjU2YiIsImlhdCI6MTU3NjAyNjExMywiZXhwIjoxNTc2MTEyNTEzfQ.h_2VhMgwzHm7oIMOJM_2Dm42xzE6-JW7RpREZDVxELs"
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVkZGZhMjllNDFiOTQzMDAxNzIxMTcxYiIsImlhdCI6MTU3NjAzNTE1OCwiZXhwIjoxNTc2MTIxNTU4fQ.9u-UGZX7ioZaQyAWCusTUD2hch2epRZ6Nm_rGn_rpV4"
       }
     });
     setQuestions(response.data);
