@@ -3,14 +3,14 @@ import "./App.css";
 import "./components/Questoes";
 
 
-// import Questoes from "./components/Questoes";
 import Login from "./components/Login";
+import Header from "./components/Header";
 
 function App() {
   return (
     // <div className="App">
     <>
-      <header className="App-header"> </header>
+       <Header />
         <Login />
     </>
     // </div>
