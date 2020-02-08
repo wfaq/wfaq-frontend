@@ -1,4 +1,4 @@
-import React, {useState}  from "react";
+import React, {useState, useEffect}  from "react";
 import "./Login.css";
 
 import api from '../services/api';
@@ -7,6 +7,7 @@ import api from '../services/api';
 
         const [email,setEmail] = useState('');
         const [password,setPassword] = useState('');
+        const [erroLogin,setErroLogin] = useState(false);
 
 
         async function autenticate(e){
@@ -21,16 +22,31 @@ import api from '../services/api';
               localStorage.setItem('wfaq-token',response.data.token);
             }
          }catch(exception){
-           console.log(exception)
+           setErroLogin(true);
          }
 
           return 0;
-        } 
+        }
+        
+        useEffect(() =>{
+          const divErroLogin = document.getElementById('div-errologin');
+          if(erroLogin) {
+            divErroLogin.classList.remove("hide");
+            divErroLogin.classList.add("erro-login");
+          }else{
+            divErroLogin.classList.remove("erro-login");
+            divErroLogin.classList.add("hide");            
+          }
+        },[erroLogin]);
+
+        function removeLoginError(){
+          setErroLogin(false);
+        }
         
    
       return (
    
-        <body>
+        // <body>
           <div className="container" >
             <div className="container col-md-4">
               <form onSubmit={autenticate} className="form-singin" >
@@ -59,13 +75,15 @@ import api from '../services/api';
                   <button className="btn btn-dark btn-lg btn-block" type="submit">Logar</button>            
               </div>  
             </form>
-            <div class="alert alert-danger alert-dismissible fade show">
-                <button type="button" class="close" data-dismiss="alert">&times;</button>
-                <strong>Erro!</strong> E-mail ou senha inválido!
+            <div className="hide" id="div-errologin">
+              <div className="alert alert-danger fade show">
+                  <button type="button" className="close" onClick={removeLoginError}>&times;</button>
+                  <strong>Erro!</strong> E-mail ou senha inválido!
+              </div>
             </div>
             </div>
           </div>
-        </body> 
+        // </body> 
 
        );
     }

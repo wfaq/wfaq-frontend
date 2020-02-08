@@ -5,6 +5,8 @@ import "./components/Questoes";
 
 import Login from "./components/Login";
 import Header from "./components/Header";
+// import Questoes from './components/Questoes';
+import Principal from './pages/principal/index';
 
 function App() {
   return (
