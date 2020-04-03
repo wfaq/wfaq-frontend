@@ -1,0 +1,9 @@
+.container li strong {
+    font-size: 18px;   
+}
+
+.buttons {
+    float: left;
+    display: flex;
+    flex-direction: column;        
+}
